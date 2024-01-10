@@ -1,0 +1,35 @@
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import {ProfileComponent} from "./profile/profile.component";
+import {MsalGuard} from "@azure/msal-angular";
+import {HomeComponent} from "./home/home.component";
+
+const routes: Routes = [
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [
+      MsalGuard
+    ]
+  },
+  {
+    // Needed for hash routing
+    path: 'code',
+    component: HomeComponent
+  },
+  {
+    path: '',
+    component: HomeComponent
+  },
+  {
+    // Needed for Error routing
+    path: 'error',
+    component: HomeComponent
+  }
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
