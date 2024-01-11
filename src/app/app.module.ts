@@ -38,6 +38,10 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatInputModule} from "@angular/material/input";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { SearchResultsComponent } from './search-results/search-results.component';
+import { TopContentComponent } from './top-content/top-content.component';
+import { RecommendationComponent } from './recommendation/recommendation.component';
+import {MatSelectModule} from "@angular/material/select";
+import { RecommendationCardComponent } from './recommendation-card/recommendation-card.component';
 
 
 export function loggerCallback(logLevel: LogLevel, message: string) {
@@ -98,7 +102,10 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     RecoTitleComponent,
     LogoPageDataComponent,
     SearchBarComponent,
-    SearchResultsComponent
+    SearchResultsComponent,
+    TopContentComponent,
+    RecommendationComponent,
+    RecommendationCardComponent
   ],
   imports: [
     BrowserModule,
@@ -115,7 +122,8 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     FormsModule,
     MatIconModule,
     MatInputModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSelectModule
   ],
   providers: [
     provideClientHydration(),

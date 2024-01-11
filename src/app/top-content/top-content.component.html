@@ -1,0 +1,32 @@
+<section id="top_content" style="background-color: #E9EBEF; margin-top:-1px">
+  <div class="container py-4 py-xl-2" >
+    <div class="row gy-4 row-cols-1 row-cols-md-2" style="background-color: #E9EBEF; margin-top:10px">
+      <div class="col">
+        <div class="d-flex flex-column flex-lg-row">
+          <div class="w-100">
+            <img class="rounded img-fluid d-block w-100 fit-cover" style="height: 239px; border-right-style: none;padding-top: 1px;" src="./assets/images/hot-topic-dog.png"></div>
+          <div class="py-4 py-lg-0 px-lg-4">
+            <h2 class="fs-1 fw-bolder" style="color: #021925;margin-bottom: 0px;/*font-size: 35px;*//*font-weight: bold;*/--bs-body-font-weight: bold;height: 45px;"><strong style="font-size: 30.88px;">Weekly Topic</strong></h2><sub style="color: #0201D9;font-weight: bold;font-size: 22px;margin-bottom: 12px;">WW{{workWeekNumber}}</sub>
+             <p style="margin-top: 17px;">
+               Check what’s new from our catalog variety of content provided by  <br>Learning & capabilities group 
+             </p><button class="btn btn-primary" type="button" style="/*background: rgb(3,22,35);*/border-radius: 0px;border-right-width: 0px;border-right-style: none;font-size: 14px"(click)="goToLink()">Read More</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="d-flex flex-column flex-lg-row">
+          <div class="w-100">
+            <img class="rounded img-fluid d-block w-100 fit-cover" style="height: 239px; border-right-style: none; padding-top: 4px; text-shadow: 0px 0px;"
+                 ngSrc="./assets/images/hot-peper.png" height="240" width="305">
+          </div>
+          <div class="py-4 py-lg-0 px-lg-4">
+            <h2 class="fs-1 fw-bolder" style="color: #021925;margin-bottom: 30px;/*font-size: 35px;*//*font-weight: bold;*/--bs-body-font-weight: bold;height: 45px;"><strong style="font-size: 28.88px;">What's Hot</strong></h2>
+            <sub style="color: #0201D9; font-weight: bold; font-size: 22px; margin-bottom: 12px;">{{repeated_count}} Likes</sub>
+            <p style="margin-top: 17px;">{{course}}</p>
+            <button class="btn btn-primary" type="button" style="/*background: rgb(3,22,35);*/border-radius: 0px;border-right-width: 0px;border-right-style: none;font-size: 14px;" (click)="whatsHotGoToLink()">Read More</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
