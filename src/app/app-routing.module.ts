@@ -19,7 +19,10 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate: [
+      MsalGuard
+    ]
   },
   {
     // Needed for Error routing

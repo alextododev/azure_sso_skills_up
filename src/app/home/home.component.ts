@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MsalBroadcastService, MsalService} from "@azure/msal-angular";
 import {filter} from "rxjs";
 import {AuthenticationResult, EventMessage,EventType} from "@azure/msal-browser";
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -11,7 +12,8 @@ import {AuthenticationResult, EventMessage,EventType} from "@azure/msal-browser"
 })
 export class HomeComponent implements OnInit{
   loginDisplay = false;
-   constructor(private authService: MsalService, private msalBroadcastService: MsalBroadcastService) { }
+
+   constructor(private authService: MsalService, private msalBroadcastService: MsalBroadcastService, private http: HttpClient) { }
 
   ngOnInit(): void {
       this.msalBroadcastService.msalSubject$
@@ -23,13 +25,12 @@ export class HomeComponent implements OnInit{
         const payload = result.payload as AuthenticationResult;
         this.authService.instance.setActiveAccount(payload.account);
       });
-
       this.setLoginDisplay();
   }
   setLoginDisplay() {
     this.loginDisplay = this.authService.instance.getAllAccounts().length > 0;
 
-  }
 
+  }
 
 }

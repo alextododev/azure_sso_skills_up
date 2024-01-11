@@ -25,6 +25,7 @@ import {MatButtonModule} from "@angular/material/button";
 import { TopBannerComponent } from './top-banner/top-banner.component';
 import { AboutComponent } from './about/about.component';
 import { EeClassDataComponent } from './ee-class-data/ee-class-data.component';
+import {NgOptimizedImage} from "@angular/common";
 
 
 export function loggerCallback(logLevel: LogLevel, message: string) {
@@ -86,7 +87,8 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     MatToolbarModule,
     MatButtonModule,
     HttpClientModule,
-    MsalModule
+    MsalModule,
+    NgOptimizedImage
   ],
   providers: [
     provideClientHydration(),
