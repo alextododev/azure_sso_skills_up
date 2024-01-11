@@ -22,6 +22,9 @@ import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
+import { TopBannerComponent } from './top-banner/top-banner.component';
+import { AboutComponent } from './about/about.component';
+import { EeClassDataComponent } from './ee-class-data/ee-class-data.component';
 
 
 export function loggerCallback(logLevel: LogLevel, message: string) {
@@ -72,7 +75,10 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
   declarations: [
     AppComponent,
     HomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    TopBannerComponent,
+    AboutComponent,
+    EeClassDataComponent
   ],
   imports: [
     BrowserModule,

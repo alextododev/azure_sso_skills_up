@@ -1,0 +1,26 @@
+
+<nav class="navbar navbar-dark navbar-expand-md py-3" style="height: 96px; border-right-style: none; background-color: black;">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" style="border-left: -200px; margin-left: -120px; height: 200px; width: 567px; " href="#"><img width="367" height="96" src="assets/images/new_logo.png"></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-5" style="height: 80px;margin-bottom: -1px;"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+
+    <div class="collapse navbar-collapse d-lg-flex" id="navcol-5" style="font-size: 14px; height: -80px; width: 487px; margin-left: 98px; border-right-color: var(--bs-navbar-color);">
+      <ul class="navbar-nav ms-auto" style="border-right: 50px; width: 417px; solid var(--bs-navbar-brand-color);">
+        <li class="nav-item" style="border-right: 1px solid var(--bs-gray-500); width: 100px;"><a class="nav-link active" href="#">Home</a></li>
+        <li class="nav-item" style="border-right: 1px solid var(--bs-gray-500); width: 100px;"><a class="nav-link" (click)="openAbout()">About</a></li>
+<!--        <li class="nav-item" style="border-right: 1px solid var(--bs-gray-500); width: 400px;"><a class="nav-link" href="https://web.yammer.com/main/org/intel.com/groups/eyJfdHlwZSI6Ikdyb3VwIiwiaWQiOiIxMDUxMjgxMzI2MDgifQ/all" target="_blank">Community of Practice</a></li>-->
+        <li class="nav-item" style="border-right: 1px solid var(--bs-gray-500); width: 400px;"><a class="nav-link" href="https://skillsupmng.apps1-lc-int.icloud.intel.com/" target="_blank">MGMT Space</a></li>
+
+      </ul>
+
+      <div (click)="openEeClassData()" class="btn btn-primary ms-md-2 btn_name" role="button" href="#" style="margin-left: -90px">
+        {{profile.givenName}}: My Activities
+
+      <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-envelope" style="margin-bottom: 14px; margin-left: 12px; font-size: 14px; margin-top: 12px;">
+       <path fill-rule="evenodd" d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"></path>
+      </svg>
+      </div>
+
+    </div>
+    <img  style="margin-left: 150px" src="assets/images/Picture1.png" width="130px" height="100px">
+  </div>
+</nav>
