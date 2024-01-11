@@ -10,9 +10,12 @@
 <!--</mat-toolbar>-->
 
 <app-top-banner [if_logged] = loginDisplay></app-top-banner>
-<div class="container">
+
+<div  style="width: 100%">
   <!--This is to avoid reload during acquireTokenSilent() because of hidden iframe -->
-  <router-outlet *ngIf="!isIframe"></router-outlet>
+  <router-outlet *ngIf="!isIframe" ></router-outlet>
 </div>
+
+<app-footer></app-footer>
 
 

@@ -1,0 +1,13 @@
+<div style="text-align: center;">
+
+  <button class="search-icon" mat-icon-button (click)="search()">
+          <mat-icon>search</mat-icon>
+  </button>
+  <mat-form-field appearance="fill" style="margin-left: 5px;width: 600px">
+    <input matInput placeholder="Search" style="width: 500px" [(ngModel)]="searchText" (keydown.enter)="search()">
+  </mat-form-field>
+  <div class="spinner" *ngIf="spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+
+</div>

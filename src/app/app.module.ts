@@ -26,6 +26,18 @@ import { TopBannerComponent } from './top-banner/top-banner.component';
 import { AboutComponent } from './about/about.component';
 import { EeClassDataComponent } from './ee-class-data/ee-class-data.component';
 import {NgOptimizedImage} from "@angular/common";
+import {MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
+import { FooterComponent } from './footer/footer.component';
+import { PrivacyComponent } from './privacy/privacy.component';
+import { PreferenceComponent } from './preference/preference.component';
+import { RecoTitleComponent } from './reco-title/reco-title.component';
+import { LogoPageDataComponent } from './logo-page-data/logo-page-data.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
+import {FormsModule} from "@angular/forms";
+import {MatIconModule} from "@angular/material/icon";
+import {MatInputModule} from "@angular/material/input";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { SearchResultsComponent } from './search-results/search-results.component';
 
 
 export function loggerCallback(logLevel: LogLevel, message: string) {
@@ -79,7 +91,14 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     ProfileComponent,
     TopBannerComponent,
     AboutComponent,
-    EeClassDataComponent
+    EeClassDataComponent,
+    FooterComponent,
+    PrivacyComponent,
+    PreferenceComponent,
+    RecoTitleComponent,
+    LogoPageDataComponent,
+    SearchBarComponent,
+    SearchResultsComponent
   ],
   imports: [
     BrowserModule,
@@ -88,7 +107,15 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     MatButtonModule,
     HttpClientModule,
     MsalModule,
-    NgOptimizedImage
+    NgOptimizedImage,
+    MatDialogClose,
+    MatDialogContent,
+    MatDialogActions,
+    MatDialogTitle,
+    FormsModule,
+    MatIconModule,
+    MatInputModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     provideClientHydration(),
