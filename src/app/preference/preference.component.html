@@ -1,1 +1,15 @@
-<p>preference works!</p>
+<div style="margin:10px">
+  <h4><b>Select your development preferences, please select up to Five items:</b></h4>
+</div>
+  <div style="padding: 5px; font-size: small">
+    <p *ngFor="let item of prefernces_items_db;let i = index;">
+      <mat-checkbox (change)="onChange($event, i)" [disabled]="ifCheckBoxDisable(i)" [checked]="prefernces_items_db[i]['status']">{{item.subject}}</mat-checkbox>
+    </p>
+    <br />
+  </div>
+  <div style="margin-top:-20px; margin-left: 10px">
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial [disabled]="countChecked<0" (click)="storepref()">Submit</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial style="margin-left:5px; object-position:bottom">Cancel</button>
+  </div>
+
+

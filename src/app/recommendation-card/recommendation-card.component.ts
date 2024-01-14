@@ -1,5 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
 import {RecoService} from "../reco.service";
+import Swal from 'sweetalert2';
+import EventEmitter from "node:events";
 
 @Component({
   selector: 'app-recommendation-card',
@@ -19,6 +21,8 @@ export class RecommendationCardComponent implements OnInit{
   @Input() preference: string = 'general'
 
   public rate: string = "none";
+
+  // @Output() messageEvent = new EventEmitter<string>();
   ngOnInit(): void {
   }
     /*delivers link to image depends on the course type*/

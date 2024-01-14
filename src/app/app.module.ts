@@ -42,6 +42,8 @@ import { TopContentComponent } from './top-content/top-content.component';
 import { RecommendationComponent } from './recommendation/recommendation.component';
 import {MatSelectModule} from "@angular/material/select";
 import { RecommendationCardComponent } from './recommendation-card/recommendation-card.component';
+import {MatTableModule} from "@angular/material/table";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 
 export function loggerCallback(logLevel: LogLevel, message: string) {
@@ -107,24 +109,26 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     RecommendationComponent,
     RecommendationCardComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MatToolbarModule,
-    MatButtonModule,
-    HttpClientModule,
-    MsalModule,
-    NgOptimizedImage,
-    MatDialogClose,
-    MatDialogContent,
-    MatDialogActions,
-    MatDialogTitle,
-    FormsModule,
-    MatIconModule,
-    MatInputModule,
-    MatProgressSpinnerModule,
-    MatSelectModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        MatToolbarModule,
+        MatButtonModule,
+        HttpClientModule,
+        MsalModule,
+        NgOptimizedImage,
+        MatDialogClose,
+        MatDialogContent,
+        MatDialogActions,
+        MatDialogTitle,
+        FormsModule,
+        MatIconModule,
+        MatInputModule,
+        MatProgressSpinnerModule,
+        MatSelectModule,
+        MatTableModule,
+        MatCheckboxModule
+    ],
   providers: [
     provideClientHydration(),
      {

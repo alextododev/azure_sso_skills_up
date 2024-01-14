@@ -9,6 +9,8 @@ import {
   PopupRequest,
   RedirectRequest
 } from "@azure/msal-browser";
+import {RecoService} from "./reco.service";
+
 
 @Component({
   selector: 'app-root',
@@ -20,12 +22,17 @@ export class AppComponent implements OnInit,OnDestroy{
   isIframe = false;
   loginDisplay = false;
   private readonly _destroying$ = new Subject<void>();
+  private user:any;
 
   constructor(
+
+    private recoService: RecoService,
     @Inject(MSAL_GUARD_CONFIG) private msalGuardConfig: MsalGuardConfiguration,
     private authService: MsalService,
     private msalBroadcastService: MsalBroadcastService
-  ) { }
+  ) {
+
+  }
 
    ngOnInit(): void {
     this.isIframe = window !== window.parent && !window.opener;
@@ -42,6 +49,8 @@ export class AppComponent implements OnInit,OnDestroy{
 
     setLoginDisplay() {
     this.loginDisplay = this.authService.instance.getAllAccounts().length > 0;
+    // Logs in Db visitor has hit the main route
+
   }
 
   login() {
@@ -78,6 +87,10 @@ export class AppComponent implements OnInit,OnDestroy{
       });
     }
   }
+
+
+
+
 
     ngOnDestroy(): void {
     this._destroying$.next(undefined);

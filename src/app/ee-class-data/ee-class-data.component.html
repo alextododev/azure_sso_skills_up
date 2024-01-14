@@ -1,1 +1,55 @@
-<p>ee-class-data works!</p>
+<!--  <button mat-button mat-dialog-close  style=" float: right;margin: 4px;" >-->
+<!--           <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-x-lg remove" id="remove-2" style="font-size: 19px;margin-right: 4px;">-->
+<!--             <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"></path>-->
+<!--             <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"></path>-->
+<!--           </svg>-->
+<!--  </button>-->
+
+<div class="container">
+  <img style="width: 100%;height: 120px;" ngSrc="assets/images/progress_banner.png" height="500" width="2000">
+  <div class="centered">Course Progress & Completion</div>
+</div>
+<p style="text-align: center;font-weight: bold;font-size: large">Completed Learnings</p>
+<div *ngIf="completedClasses.length==0">We didn't find any completed classes</div>
+  <mat-table [dataSource]="completedClasses" class="mat-elevation-z8">
+  <ng-container matColumnDef="Title">
+    <th mat-header-cell *matHeaderCellDef> Title </th>
+    <td mat-cell *matCellDef="let element"> {{element.Title}} </td>
+  </ng-container>
+  <!-- Position Column -->
+  <ng-container matColumnDef="CompletedAt">
+    <th mat-header-cell *matHeaderCellDef> CompletedAt </th>
+    <td mat-cell *matCellDef="let element"> {{element.CompletedAt.split("T")[0]}}</td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="Provider">
+    <th mat-header-cell *matHeaderCellDef> Provider </th>
+    <td mat-cell *matCellDef="let element"> {{element.Provider}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="completedClassesColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: completedClassesColumns;"></tr>
+  </mat-table>
+
+<br>
+
+<p style="text-align: center;font-weight: bold;font-size: large">Courses assigned by your manager</p>
+<div *ngIf="mngRecommended.length==0">Your manager hasn't assigned any classes yet</div>
+<div style="height: 200px;overflow-y: auto; margin-left: 5px">
+  <div *ngFor="let course of mngRecommended; index as i ">
+    {{i}}.<a href={{course.Course_link}} target="_blank">{{course.Recommended_course}}</a>
+  </div>
+</div>
+
+<br>
+
+  <button mat-button mat-dialog-close  style=" float: right;" >
+           <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-x-lg remove" id="remove-2" style="font-size: 19px;margin-right: 4px;">
+             <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"></path>
+             <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"></path>
+           </svg>
+  </button>
+
+
+
