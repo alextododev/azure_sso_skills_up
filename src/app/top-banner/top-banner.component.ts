@@ -75,7 +75,7 @@ export class TopBannerComponent implements OnInit{
       .subscribe(profile => {
         this.profile_user = profile;
         console.log("profile:", this.profile_user)
-        this.userProfileService.update_user(profile)
+        // this.userProfileService.update_user(profile)
       //   After user was recognized logs user visit in Mongo DB
         this.logVisitor();
       },
@@ -182,7 +182,7 @@ export class TopBannerComponent implements OnInit{
             })
           }
           else {
-            this.userPreferencesService.userPreferences(resp.status)
+            this.userPreferencesService.updatePreferences(resp.status)
           }
         }
       )

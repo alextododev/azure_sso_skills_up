@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {RecoService} from "../reco.service";
-import { UserProfileService} from "../user-profile.service";
+import {UserProfileService} from "../user-profile.service";
 
 
 

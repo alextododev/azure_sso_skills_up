@@ -14,11 +14,11 @@ export class RecoTitleComponent {
   }
   openPreferences() {
     const prefRef = this.dialog.open(PreferenceComponent, {
-      height: '1130px',
+      height: '800px',
       width: '640px',
     });
     prefRef.afterClosed().subscribe(result => {
-      console.log('prefernce done')
+      console.log('preference done')
     })
 
   }

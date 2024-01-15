@@ -15,7 +15,7 @@
    <div class="row gy-4 row-cols-1 row-cols-md-2" style="overflow-y: auto; height:1600px;">
 
     <div *ngFor="let reco of recommendations; let i = index">
-      <app-recommendation-card *ngIf="i < cards_count"  [link]="reco.link" [courseTitle]="reco.recommendation_description" [score]="reco.score*100" [ImageUrl]="reco.ImageUrl" [type]="reco.CourseSource" [preference]="reco.preference"></app-recommendation-card>
+      <app-recommendation-card *ngIf="i < cards_count" (messageEvent)="remove_course($event)" [link]="reco.link" [courseTitle]="reco.recommendation_description" [score]="reco.score*100" [ImageUrl]="reco.ImageUrl" [type]="reco.CourseSource" [preference]="reco.preference"></app-recommendation-card>
     </div>
 
   </div>

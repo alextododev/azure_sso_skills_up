@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-
+import { provideAnimations} from "@angular/platform-browser/animations";
+import { provideNoopAnimations} from "@angular/platform-browser/animations";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {
@@ -130,7 +131,9 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
         MatCheckboxModule
     ],
   providers: [
+    provideAnimations(),
     provideClientHydration(),
+    provideNoopAnimations(),
      {
       provide: HTTP_INTERCEPTORS,
       useClass: MsalInterceptor,

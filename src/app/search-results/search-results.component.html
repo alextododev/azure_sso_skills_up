@@ -1,1 +1,15 @@
-<p>search-results works!</p>
+<p style="text-align: center; font-size: x-large"> Your search results</p>
+<div class="container py-4 py-xl-5">
+  <div class="row gy-4 row-cols-1 row-cols-md-2">
+    <div *ngFor="let res of results; let i = index">
+          <app-recommendation-card *ngIf="i<8"
+                                   [link]='res._source.url'
+                                   [courseTitle]='res._source.title'
+                                   [ImageUrl]='res._source.imageurl'
+                                   [type]="res._score"
+                                   [ifRemoveBtn]="false">
+          </app-recommendation-card>
+    </div>
+  </div>
+</div>
+<button mat-button mat-dialog-close style="font-weight:bold">Close</button>

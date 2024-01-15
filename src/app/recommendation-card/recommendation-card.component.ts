@@ -1,7 +1,8 @@
-import {Component, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {RecoService} from "../reco.service";
 import Swal from 'sweetalert2';
-import EventEmitter from "node:events";
+import {UserProfileService} from "../user-profile.service";
+
 
 @Component({
   selector: 'app-recommendation-card',
@@ -9,7 +10,9 @@ import EventEmitter from "node:events";
   styleUrl: './recommendation-card.component.css'
 })
 export class RecommendationCardComponent implements OnInit{
-  constructor(private recosService: RecoService) { }
+  constructor(private recosService: RecoService, private userProfileService: UserProfileService) {
+    this.userProfileService.current_user.subscribe(user_profile =>this.user = user_profile)
+  }
   @Input() courseId: string = "none";
   @Input() courseTitle: string = 'Course Title';
   @Input() course: string = 'my course';
@@ -21,9 +24,13 @@ export class RecommendationCardComponent implements OnInit{
   @Input() preference: string = 'general'
 
   public rate: string = "none";
+  user:any;
 
-  // @Output() messageEvent = new EventEmitter<string>();
+  @Output() messageEvent = new EventEmitter<string>();
+
+
   ngOnInit(): void {
+    this.getRating();
   }
     /*delivers link to image depends on the course type*/
   public getImage(course: String, type:String) {
@@ -32,16 +39,16 @@ export class RecommendationCardComponent implements OnInit{
        // check for generic img url
        if (this.ImageUrl == "https://static-na2intel.sabacloud.com/assets/s/1jetsrdbrulv9/spf/skin/wireframe/media/images/Course_280x140.png") {
 
-         console.log("General Img to change:", course)
+         // console.log("General Img to change:", course)
          let asciiCodeLastNum = this.courseTitle.slice(1).charCodeAt(0);
           if (0 < asciiCodeLastNum && asciiCodeLastNum < 127){
             let oldRange = 127 - 1
             let newRange = 11 - 1
             let newValue = (((asciiCodeLastNum - 1) * newRange) / oldRange) + 1
           // console.log("On random:" + newValue)
-          console.log("returned:",Math.round(newValue), ":",asciiCodeLastNum,":",this.courseTitle.slice(-1))
+          // console.log("returned:",Math.round(newValue), ":",asciiCodeLastNum,":",this.courseTitle.slice(-1))
           return './assets/images/fab28_random_imgs/'+Math.round(newValue)+'.jpg'
-        }
+          }
         else{
           return './assets/images/fab28_random_imgs/'+1+'.jpg'
         }
@@ -166,7 +173,7 @@ export class RecommendationCardComponent implements OnInit{
       'Link': this.link,
       'ImageUrl': this.ImageUrl
     }
-     this.recosService.logCourseVisitLink(body).subscribe(
+     this.recosService.logCourseVisitLink(body, this.user['jobTitle']).subscribe(
       (data: any) => {
         console.log(data)
       }
@@ -174,8 +181,8 @@ export class RecommendationCardComponent implements OnInit{
     window.open(this.link, "_blank");
   }
 
-    public lograting(rate: String) {
-    /*Log obejct body to bakcend*/
+    public logRating(rate: String) {
+    /*Log object body to backend*/
     let body = {
       'Course': this.courseTitle,
       'CourseId': this.courseId,
@@ -198,10 +205,10 @@ export class RecommendationCardComponent implements OnInit{
         /**User has confirmed the removal*/
         if (result.isConfirmed) {
           /*start request to be*/
-          this.recosService.lograteing(body).subscribe(
+          this.recosService.logRate(body,this.user['jobTitle']).subscribe(
             (data: any) => {
               console.log(data);
-              this.getrating();
+              this.getRating();
             }
           );
           /**Logs DISLIKE to mongo DB*/
@@ -215,35 +222,42 @@ export class RecommendationCardComponent implements OnInit{
     /**Liked clicked - logs data to Mongo DB*/
     else {
       console.log("clicked like")
-      /** subcase . case when class is already liked*/
+      /** sub case . case when class is already liked*/
       if (this.rate=="like"){
         console.log("Course is already liked and will be unliked")
         /**Updating the body with None value */
         body.Rating = 'like_canceled'
         console.log(body)
       }
-      /**subcase when class was not liked before - FIRST TIME LIKE*/
+      /**sub case when class was not liked before - FIRST TIME LIKE*/
        /*start request to be*/
-        this.recosService.lograteing(body).subscribe(
+        // this.recosService.logRating(body,this.user['jobTitle']).subscribe(
+        //   (data: any) => {
+        //     console.log(data);
+        //     this.getRating();
+        //   }
+        // );
+      this.recosService.logRate(body,this.user['jobTitle'] ).subscribe(
+        (resp:any)=>{
+          console.log(resp);
+          this.getRating();
+        }
+      )
+
+
+    }
+
+    }
+      public getRating() {
+        let body = { 'Course': this.courseTitle }
+        this.recosService.checkRate(body, this.user['jobTitle']).subscribe(
           (data: any) => {
-            console.log(data);
-            this.getrating();
-          }
-        );
-
-    }
-
-    }
-      public getrating() {
-    let body = { 'Course': this.courseTitle }
-    this.recosService.checkrate(body).subscribe(
-      (data: any) => {
-        // console.log("rate body:", body)
-        this.rate = data.status;
-        /**If rating is dislike removes course card from the list*/
-        if (this.rate == 'dislike') {
-          // Need to complete !!!!!!!!!!!!!!!!!!!
-          // this.messageEvent.emit(this.courseTitle);
+            // console.log("rate body:", data)
+            this.rate = data.status;
+            /**If rating is dislike removes course card from the list*/
+            if (this.rate == 'dislike') {
+              // Need to complete !!!!!!!!!!!!!!!!!!!
+              // this.messageEvent.emit(this.courseTitle);
         }
       }
 

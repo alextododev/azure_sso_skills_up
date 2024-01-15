@@ -12,11 +12,11 @@ export class RecoService {
   //private url = "https://todorova-mobl.ger.corp.intel.com";
 
   // private url = "https://skillsup.apps1-lc-int.icloud.intel.com";
-  private url = "http://10.245.180.106:8000"
+  private url = "http://10.187.4.162:8000"
   constructor(private http: HttpClient) { }
 
-  public get_recommendation() {
-    return this.http.get(this.url + '/reco/');
+  public get_recommendation(user_wwid:any) {
+    return this.http.get(this.url + '/reco/'+ user_wwid+"/");
     /**return this.http.get('/reco')*/
   }
   public get_user_name() {
@@ -35,12 +35,22 @@ export class RecoService {
     return this.http.get(this.url + '/logifsign/'+user_wwid+"/");
   }
 
-  public lograteing(body: any) {
-    return this.http.post(this.url + '/rateing/', body);
+
+  // public logRating(body: any, user_wwid:any) {
+  //   console.log("body rate",body)
+  //   return this.http.post<any>(this.url + '/rateing/'+ user_wwid+"/", null);
+  // }
+
+  public logRate(body:any, user_wwid:any){
+    return this.http.post(this.url + '/lograte/' + user_wwid, body)
+  }
+  public store_pref(body: any, user_wwid:any) {
+    console.log("body",body)
+    return this.http.post(this.url + '/storepref/'+user_wwid+"/", body);
   }
 
-  public checkrate(body: any) {
-    return this.http.post(this.url + '/getrate/', body);
+  public checkRate(body: any,user_wwid:any) {
+    return this.http.post(this.url + '/getrate/'+user_wwid+"/", body);
   }
 
   public get_prefernces(user_wwid:any) {
@@ -55,16 +65,14 @@ export class RecoService {
     return this.http.get(this.url + '/getpabout/');
   }
 
-  public store_pref(body: any, user_wwid:any) {
-    return this.http.post(this.url + '/storepref/'+user_wwid+"/", body);
-  }
+
 
   public ifPreferenceSummited(user_wwid:any) {
     return this.http.get(this.url + '/ifprefsubmitted/'+user_wwid+"/");
   }
 
-  public logCourseVisitLink (body: any) {
-    return this.http.post(this.url + '/courselinkvisit/', body);
+  public logCourseVisitLink (body: any, user_wwid: any) {
+    return this.http.post(this.url + '/courselinkvisit/'+ user_wwid + "/", body);
   }
 
   public getF28Classes(){
