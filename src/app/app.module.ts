@@ -56,8 +56,8 @@ export function MSALInstanceFactory(): IPublicClientApplication {
     auth: {
       clientId: '029f719e-49eb-4471-af75-4039d76a290c',
       authority: 'https://login.microsoftonline.com/46c98d88-e344-4ed4-8496-4ed7712e255d',
-      redirectUri: 'http://localhost:4200/'
-      // redirectUri: 'https://azure-test.apps1-lc-int.icloud.intel.com/'
+      // redirectUri: 'http://localhost:4200/'
+      redirectUri: 'https://azure-test.apps1-lc-int.icloud.intel.com/'
     },
     cache: {
       cacheLocation: BrowserCacheLocation.LocalStorage,

@@ -6,7 +6,7 @@
   <mat-form-field appearance="fill" style="margin-left: 5px;width: 600px">
     <input matInput placeholder="Search" style="width: 500px" [(ngModel)]="searchText" (keydown.enter)="search()">
   </mat-form-field>
-  <div class="spinner" *ngIf="spinner">
+  <div class="spinner" *ngIf="spinner" style="margin-left: 400px">
     <mat-spinner></mat-spinner>
   </div>
 

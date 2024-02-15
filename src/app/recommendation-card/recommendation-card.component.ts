@@ -256,8 +256,7 @@ export class RecommendationCardComponent implements OnInit{
             this.rate = data.status;
             /**If rating is dislike removes course card from the list*/
             if (this.rate == 'dislike') {
-              // Need to complete !!!!!!!!!!!!!!!!!!!
-              // this.messageEvent.emit(this.courseTitle);
+              this.messageEvent.emit(this.courseTitle);
         }
       }
 

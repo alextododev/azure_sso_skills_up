@@ -12,7 +12,7 @@ export class RecoService {
   //private url = "https://todorova-mobl.ger.corp.intel.com";
 
   // private url = "https://skillsup.apps1-lc-int.icloud.intel.com";
-  private url = "http://10.187.4.162:8000"
+  private url = "https://azure-be.apps1-lc-int.icloud.intel.com"
   constructor(private http: HttpClient) { }
 
   public get_recommendation(user_wwid:any) {
